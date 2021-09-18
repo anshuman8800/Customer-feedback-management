@@ -13,3 +13,9 @@ mongoose.connect("mongodb://localhost:27017/myCostomerFeedbackDB", {
 }, () => {
     console.log("DB connected")
 })
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+})
