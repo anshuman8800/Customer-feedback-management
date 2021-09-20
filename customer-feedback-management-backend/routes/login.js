@@ -4,20 +4,20 @@ const database = require("../database");
 
 /* GET home page. */
 router.post("/", async function (req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   const { email, password } = req.body;
+
   try {
     const user = await database.select().from("Login").where("email", email);
     if (user.length == 0) {
-      console.log("Wrong email");
+      res.send({message: "User not registered"})
     } else if (user[0].password != password) {
-      console.log("Wrong password");
+      res.send({ message: "Password didn't match"})
     } else {
-      console.log("successfully login");
-      res.send("success");
+      res.send({message: "Login Successfull", user: user})
     }
   } catch (err) {
-    console.log(err);
+    res.send(err)
   }
 });
 

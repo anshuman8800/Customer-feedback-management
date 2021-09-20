@@ -24,6 +24,7 @@ const Register = () => {
       alert("send");
       axios.post("http://localhost:8000/register", user).then((res) => {
         // history.push("/login");
+        console.log(res.data.message);
       });
     } else {
       alert("invlid input");

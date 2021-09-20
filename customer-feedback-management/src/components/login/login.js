@@ -22,6 +22,7 @@ const Login = () => {
       alert("send");
       axios.post("http://localhost:8000/login", user).then((res) => {
         // history.push("/login");
+        alert(res.data.message);
       });
     } else {
       alert("invlid input");
