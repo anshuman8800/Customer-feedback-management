@@ -31,7 +31,7 @@ const Login = ({ setLoginUser }) => {
         history.push("/");
       });
     } else {
-      alert("invlid input");
+      alert("invalid input");
     }
   };
   return (
