@@ -1,17 +1,42 @@
 .homepage {
+    width: 800px;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content:center;
-    width: 50vw;
-    height: 50vh;
+    /* align-items: center; */
+    /* justify-content:center; */
+    /* width: 50vw;
+    height: 50vh; */
     border-radius: 20px;
     box-shadow: 0 0 15px 5px grey;
     background: white;
     position: relative
 }
 
-.homepage > .button {
+div.formCSS
+{
+    /* width: 400px; */
+    /* height: 300px; */
+    display: block;
+    text-align: center;
+}
+formCSS
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.username {
+    width:500px;
+    margin: 0 auto;
+    text-align: center;
+}
+.mb-3{
+    text-align: center;
+}
+
+/* .homepage > .button {
     background: #1877f2;
     border: 1px solid #1877f2;
     color: #fff;
@@ -21,4 +46,4 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
-}
+} */
