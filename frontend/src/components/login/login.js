@@ -24,7 +24,7 @@ const Login = ({ setLoginUser }) => {
     const { email, password } = user;
     if (email && password) {
       axios.post("http://localhost:8000/login", user).then((res) => {
-        // alert(res.data.message);
+        alert(res.data.message);
         if (res.data.user !== undefined) {
           setLoginUser(res.data.user[0]); //store the res result into app.js setLoginUser
         }

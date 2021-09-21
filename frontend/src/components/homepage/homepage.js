@@ -3,34 +3,32 @@ import "./homepage.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-
 const Homepage = ({ user }) => {
-
   const [data, setData] = useState({
     email_box: "",
     message_box: "",
   });
   //correct handle function
-  function handle(e){
-    const newdata = {...data}
+  function handle(e) {
+    const newdata = { ...data };
     newdata[e.target.name] = e.target.value;
-    setData(newdata)
-  };
+    setData(newdata);
+  }
 
   const submitForm = () => {
-    const {email_box, message_box} = data;
-    if(email_box !== user.email && message_box!==""){
-      alert("invalid input")
-    }
-    else{
-      axios.post("http://localhost:8000/login/saveFeedback",data).then((res) =>{
-        if(res.data.pass === 1){
-          alert("Thankyou for Complain")
-        }
-        else{
-          alert("Complain not register in database");
-        }
-      })
+    const { email_box, message_box } = data;
+    if (email_box !== user.email && message_box !== "") {
+      alert("invalid input");
+    } else {
+      axios
+        .post("http://localhost:8000/login/saveFeedback", data)
+        .then((res) => {
+          if (res.data.pass === 1) {
+            alert("Thankyou for Complain");
+          } else {
+            alert("Complain not register in database");
+          }
+        });
     }
   };
   const history = useHistory();
@@ -54,7 +52,6 @@ const Homepage = ({ user }) => {
               name="email_box"
               value={data.email_box}
               onChange={handle}
-              placeholder="abc@gmail.com"
             ></input>
           </div>
           <label for="exampleFormControlTextarea1" class="form-label">
@@ -68,7 +65,12 @@ const Homepage = ({ user }) => {
             placeholder="Type your complain..."
             rows="3"
           ></textarea>
-          <button type="button" class="btn btn-outline-primary" onClick={submitForm}>
+          
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            onClick={submitForm}
+          >
             Submit
           </button>
         </div>
@@ -82,31 +84,10 @@ const Homepage = ({ user }) => {
             {user.message}
           </label>
         </div>
+        
       </div>
     </div>
   );
 };
 
 export default Homepage;
-
-// import React from "react";
-// import "./homepage.css";
-// import { useHistory } from "react-router-dom"
-
-// const Homepage = ({user}) => {
-//   const history = useHistory()
-//   return (
-//     <div className="homepage">
-//       <h1>Homepage</h1>
-//       <div className="btn btn-success" onClick={() => history.push("/login")}>LogOut</div>
-//       <h1>{user.email}</h1>
-//       {console.log(user)}
-//       <div class="mb-3">
-//         <label for="exampleFormControlTextarea1" class="form-label">Enter your complain</label>
-//         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-//       </div>
-//     </div>
-//   )
-// };
-
-// export default Homepage;
