@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./register.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   const [user, setUser] = useState({
     name: "",
@@ -23,14 +23,13 @@ const Register = () => {
 
   const register = () => {
     const { name, email, password, reEnterPassword } = user;
-    if (name && email && password && (password === reEnterPassword)) {
-      alert("send");
+    if (name && email && password && password === reEnterPassword) {
       axios.post("http://localhost:8000/register", user).then((res) => {
-        // history.push("/login");
-        console.log(res.data.message);
+        alert(res.data.message);
+        history.push("/login");
       });
     } else {
-      alert("invlid input");
+      alert("invlid input or password mismatch");
     }
   };
 
@@ -70,7 +69,9 @@ const Register = () => {
         Register
       </div>
       <div>or</div>
-      <div className="button" onClick={() => history.push("/login")} >Login</div>
+      <div className="button" onClick={() => history.push("/login")}>
+        Login
+      </div>
     </div>
   );
 };

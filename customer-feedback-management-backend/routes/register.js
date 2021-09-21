@@ -11,20 +11,17 @@ router.post("/", async function (req, res) {
     const user = await database.select().from("Login").where("email", email);
     console.log(user.length);
     if (user.length == 1) {
-      // console.log("already registered");
-      res.send({message: "User already registerd"});
+      res.send({ message: "User already registerd" });
     } else {
       await database("Login").insert({
         name: name,
         email: email,
         password: password,
       });
-      // console.log("data inserted successfully");
-      res.send( { message: "Successfully Registered, Please login now." })
+      res.send({ message: "Successfully Registered, Please login now." });
     }
   } catch (err) {
-    // console.log(err);
-    res.send(err)
+    res.send(err);
   }
 });
 
