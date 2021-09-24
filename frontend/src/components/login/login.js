@@ -25,6 +25,9 @@ const Login = ({ setLoginUser }) => {
     if (email && password) {
       axios.post("http://localhost:8000/login", user).then((res) => {
         alert(res.data.message);
+        if(res.data.message==="User not registered" || res.data.message==="Password didn't match"){
+          history.push("/login");
+        }
         if (res.data.user !== undefined) {
           setLoginUser(res.data.user[0]); //store the res result into app.js setLoginUser
         }
